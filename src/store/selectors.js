@@ -1,9 +1,9 @@
 export const selectFeedLoading = (state) => {
-  // or state dot feed
-  return state.loading;
+  //   console.log("state at selectors", state);
+  return state.feed.loading;
 };
 
 export const selectFeedPosts = (state) => {
   // or state dot feed.
-  return state.posts;
+  return state.feed.posts;
 };
