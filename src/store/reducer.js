@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
-import feedReducer from "./feedReducer";
+import feedSliceReducer from "./feed/reducer";
+import postPageSliceReducer from "./postPage/reducer";
 
 // Create a combined root reducer
 
 const reducer = combineReducers({
-  feed: feedReducer,
+  feed: feedSliceReducer,
+  postPage: postPageSliceReducer,
 });
 
 export default reducer;

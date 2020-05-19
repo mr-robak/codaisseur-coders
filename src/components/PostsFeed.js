@@ -5,8 +5,9 @@ import moment from "moment";
 import "./PostsFeed.css";
 import loadingImg from "../images/loading.gif";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchNext5Posts } from "../store/actions.js";
-import { selectFeedPosts, selectFeedLoading } from "../store/selectors";
+import { fetchNext5Posts } from "../store/feed/actions.js";
+import { selectFeedPosts, selectFeedLoading } from "../store/feed/selectors";
+import { Link } from "react-router-dom";
 
 export default function PostsFeed() {
   const dispatch = useDispatch();
@@ -41,18 +42,20 @@ export default function PostsFeed() {
   //   }
   useEffect(() => {
     dispatch(fetchNext5Posts(offset));
-    setOffset(offset + 5);
-  }, [dispatch]);
+  }, [dispatch, offset]);
 
   const renderPosts = loading ? (
     <img src={loadingImg} alt="loading" />
   ) : (
     posts.map((post, index) => {
       // console.log(post);
-      const { title, createdAt, tags } = post;
+      const { id, title, createdAt, tags } = post;
       return (
         <div key={index + createdAt} className="postWrapper">
-          <h3>{title}</h3>
+          <Link to={`/post/${id}`}>
+            {" "}
+            <h3>{title}</h3>{" "}
+          </Link>
           <p>
             {moment(createdAt).format("DD-MM-YYYY")} •{" "}
             {tags.map((tag, index) => (
@@ -72,7 +75,7 @@ export default function PostsFeed() {
       {renderPosts}
       <button
         onClick={(e) => {
-          dispatch(fetchNext5Posts(offset));
+          setOffset(offset + 5);
         }}
       >
         Lodad more...

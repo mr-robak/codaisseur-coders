@@ -1,8 +1,9 @@
 import axios from "axios";
+import API_URL from "../../config";
 
 export function startLoading() {
   return {
-    type: "START_LOADING",
+    type: "START_LOADING_POSTS",
   };
 }
 
@@ -16,7 +17,7 @@ export function postsFetched(morePosts) {
 export function fetchNext5Posts(offset) {
   return async (dispatch, getState) => {
     dispatch(startLoading());
-    const API_URL = `https://codaisseur-coders-network.herokuapp.com`;
+
     const response = await axios.get(
       // fetch next set of posts (use offset+limit),
       API_URL + `/posts?offset=${offset}&limit=5`

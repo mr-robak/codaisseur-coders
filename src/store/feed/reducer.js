@@ -5,7 +5,7 @@ const initialState = {
 
 export default function feedReducer(state = initialState, action) {
   switch (action.type) {
-    case "START_LOADING":
+    case "START_LOADING_POSTS":
       //   console.log("START_LOADING");
       //   console.log("state", state);
       return { ...state, loading: true };

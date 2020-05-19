@@ -1,21 +1,10 @@
-.PostsFeed .tag {
-  margin: 2px;
-  padding: 0.5em;
-
-  background-color: rgb(204, 204, 204);
-
-  border-radius: 9px;
-
-  font-size: smaller;
-  font-weight: bold;
-
-  color: rgb(255, 255, 255);
+.PostsFeed {
 }
 
 .postWrapper {
   margin: 5px;
   padding: 0.1em 1em;
-  border-color: rgb(146, 146, 146);
+  border-color: rgb(138, 138, 138);
   border-radius: 9px;
   border-style: solid;
   border-width: thin;
